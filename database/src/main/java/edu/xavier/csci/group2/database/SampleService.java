@@ -18,18 +18,19 @@ public class SampleService {
     }
 
 
-    public void insertSomeData() {
-        Object[] params = {"Sample", "Service"};
-        jdbcTemplate.update("INSERT INTO customer(first_name, last_name) VALUES (?,?)",
-                params);
-    }
+//    public void insertSomeData() {
+//        Object[] params = {"Sample", "Service"};
+//        jdbcTemplate.update("INSERT INTO customer(first_name, last_name) VALUES (?,?)",
+//                params);
+//    }
 
-    public Customer[] getCustomers() {
-        Customer[] ret = new Customer[2];
-        return (Customer[]) jdbcTemplate.query(
-                "SELECT id, first_name, last_name FROM customer",
-                (rs, rowNum) -> new Customer(rs.getLong("id"),
-                        rs.getString("first_name"), rs.getString("last_name"))
+    public Event[] getEvent(int id) {
+        Event[] ret = new Event[1];
+        return (Event[]) jdbcTemplate.query(
+                "SELECT event_id, event_name, start_time, end_time, room_number FROM event WHERE event_id = " + id,
+                (rs, rowNum) -> new Event(rs.getInt("event_id"),
+                        rs.getString("event_name"), rs.getInt("start_time"), rs.getInt("end_time"),
+                        rs.getInt("room_number"))
         ).toArray(ret);
     }
 }

@@ -11,8 +11,8 @@ CREATE TABLE alter (
 CREATE TABLE event (
     event_id int primary key,
     event_name varchar(500),
-    start_time varchar(50),
-    end_time varchar(50),
+    start_time int,
+    end_time int,
     room_number int,
 );
 
@@ -22,3 +22,8 @@ CREATE TABLE schedule (
     event_name varchar(500),
     room_number int,
 );
+
+INSERT into ALTER VALUES(101);
+INSERT into EVENT VALUES(1,'test event',8,9,101);
+INSERT into EVENT VALUES(2,'test event',8,9,101);
+INSERT into USER VALUES(000647468,'tyler');

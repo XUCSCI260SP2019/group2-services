@@ -13,12 +13,12 @@ public class SampleController {
     }
 
     @GetMapping("/insert")
-    public int insert() {
-    return 21;
+    public void insert() {
+        sampleService.insertSomeData();
     }
 
     @GetMapping("/show")
     public Event[] show() {
-        return sampleService.getEvent(1);
+        return sampleService.getEvent(10);
     }
 }

@@ -18,16 +18,16 @@ public class SampleService {
     }
 
 
-//    public void insertSomeData() {
-//        Object[] params = {"Sample", "Service"};
-//        jdbcTemplate.update("INSERT INTO customer(first_name, last_name) VALUES (?,?)",
-//                params);
-//    }
+    public void insertSomeData() {
+        Object[] params = {3, "test-event2" , 9, 10, 101};
+        jdbcTemplate.update("INSERT INTO event(event_id, event_name, start_time, end_time, room_number) VALUES (?,?,?,?,?)",
+                params);
+    }
 
-    public Event[] getEvent(int id) {
+    public Event[] getEvent(int timeslot) {
         Event[] ret = new Event[1];
         return (Event[]) jdbcTemplate.query(
-                "SELECT event_id, event_name, start_time, end_time, room_number FROM event WHERE event_id = " + id,
+        "SELECT * FROM event WHERE start_time NOT IN (SELECT DISTINCT start_time FROM event WHERE start_time = " + timeslot + ")",
                 (rs, rowNum) -> new Event(rs.getInt("event_id"),
                         rs.getString("event_name"), rs.getInt("start_time"), rs.getInt("end_time"),
                         rs.getInt("room_number"))

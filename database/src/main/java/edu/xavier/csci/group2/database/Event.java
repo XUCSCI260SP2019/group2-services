@@ -18,8 +18,8 @@ public class Event {
     @Override
     public String toString() {
         return String.format(
-                "Event[event_id=%d, event_name='%s', start_time='%d' , end_time='%d' , room_number = '%d']",
-                event_id, event_name, start_time, end_time, room_number);
+                "Event Name: %s Time: %d:00 - %d:00 Room Number : %s",
+                event_name, start_time, end_time, room_number);
     }
     public int getId() {
         return event_id;

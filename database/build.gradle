@@ -18,4 +18,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compile('org.springframework.boot:spring-boot-starter-security') //added dependency
+	compile('org.springframework.cloud:spring-cloud-starter-oauth2') //added dependency
+	compile('org.springframework.cloud:spring-cloud-starter-security') //added dependency
+	testCompile('org.springframework.security:spring-security-test') //added dependency
 }

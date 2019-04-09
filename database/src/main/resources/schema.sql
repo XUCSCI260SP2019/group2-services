@@ -1,6 +1,8 @@
 CREATE TABLE user (
     user_id int primary key,
     user_name varchar(500),
+    email varchar(500),
+    password varchar(50);
 );
 
 CREATE TABLE alter (
@@ -25,5 +27,5 @@ CREATE TABLE schedule (
 
 INSERT into ALTER VALUES(101);
 INSERT into EVENT VALUES(1,'test event',8,9,101);
-INSERT into EVENT VALUES(2,'test event',8,9,101);
+INSERT into EVENT VALUES(2,'test event3',10,11,101);
 INSERT into USER VALUES(000647468,'tyler');

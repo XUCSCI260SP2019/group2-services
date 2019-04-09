@@ -21,4 +21,9 @@ public class SampleController {
     public Event[] show() {
         return sampleService.getEvent(10);
     }
+
+    @GetMapping("/register")
+    public void register() {
+        sampleService.register(0001,"test", "thisisatest");
+    }
 }

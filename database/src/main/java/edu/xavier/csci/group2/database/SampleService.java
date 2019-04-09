@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import edu.xavier.csci.group2.database.security.PasswordHash;
 
 import java.util.List;
 
@@ -22,6 +23,14 @@ public class SampleService {
         Object[] params = {3, "test-event2" , 9, 10, 101};
         jdbcTemplate.update("INSERT INTO event(event_id, event_name, start_time, end_time, room_number) VALUES (?,?,?,?,?)",
                 params);
+    }
+
+    public void register(int user_id, String username, String password){
+        String hashedPass = PasswordHash.hashPassword(password);
+        Object[] account_details = {user_id, username, hashedPass};
+        User user = new User(user_id, username, hashedPass);
+        jdbcTemplate.update("INSERT INTO user(user_id, user_name, password) VALUES (?,?,?)",
+                account_details);
     }
 
     public Event[] getEvent(int timeslot) {

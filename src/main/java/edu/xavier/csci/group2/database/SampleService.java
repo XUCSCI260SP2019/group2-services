@@ -25,19 +25,27 @@ public class SampleService {
     }
 
 
-    public void register(int user_id, String username, String password){
+    public boolean register(int user_id, String username, String password){
 //        String hashedPass = PasswordHash.hashPassword(password);
         Object[] account_details = {user_id, username, password};
         User user = new User(user_id, username, password);
         jdbcTemplate.update("INSERT INTO user(user_id, user_name, password) VALUES (?,?,?)",
                 account_details);
+
+        return true;
     }
 
     public boolean login(String user_name, String password){
+        User[] use = new User[1];
             jdbcTemplate.query(
-                "SELECT * FROM user WHERE user_name = " + user_name + ")",
+                "SELECT * FROM user WHERE user_name = '" + user_name + "')",
                 (rs, rowNum) -> new User(rs.getInt("user_id"),
-                        rs.getString("user_name"), rs.getString("password")));
+                        rs.getString("user_name"), rs.getString("password"))).toArray(use);
+
+            User verif = use[0];
+            if(verif.getpassword() == password) {
+                return true;
+            }
 
             return false;
    }

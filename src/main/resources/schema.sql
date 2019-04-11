@@ -25,7 +25,7 @@ CREATE TABLE schedule (
 );
 
 INSERT into ALTER VALUES(101);
+INSERT into user VALUES(33333, 'tyler', 'trst');
 INSERT into EVENT VALUES(1,'test event',8,9,101);
 INSERT into EVENT VALUES(2,'test event',10,11,101);
 INSERT into EVENT VALUES(3,'test event3',11,12,101);
-INSERT into USER VALUES(000647468,'tyler', 'trst');

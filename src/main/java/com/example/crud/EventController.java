@@ -101,10 +101,10 @@ public class EventController {
         eventRepository.save(event);
     }
 
-    @PostMapping("/confirm")
-    private void confirm(@RequestBody Event event) {
-    event.setStatus(true);
-    eventRepository.save(event);
-
+    @RequestMapping("/confirm/{id}")
+    private void confirm(@PathVariable("id") int id) {
+    Event confirmMe = eventRepository.findById(id).get();
+    confirmMe.setStatus(true);
+    eventRepository.save(confirmMe);
     }
 }

@@ -6,4 +6,3 @@ create table if not exists event(
     roomNumber int,
     isConfirmed boolean
 );
-
